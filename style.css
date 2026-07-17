@@ -1,0 +1,555 @@
+/* ===========================
+      ОБЩИЕ НАСТРОЙКИ
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --gold:#ffd65c;
+    --green:#44d17b;
+    --blue:#4aa9ff;
+    --red:#e74c3c;
+    --panel:rgba(17,24,39,.82);
+    --panelBorder:rgba(255,255,255,.08);
+
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#2f5d3d,#14261b 75%);
+
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+        ОКНО ИГРЫ
+=========================== */
+
+#app{
+
+    width:1200px;
+    height:720px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:#1a1d25;
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.65);
+
+    position:relative;
+
+}
+
+/* ===========================
+          ЭКРАНЫ
+=========================== */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.screen.active{
+
+    display:flex;
+
+}
+
+/* ===========================
+         СТАРТОВОЕ МЕНЮ
+=========================== */
+
+#startScreen,
+#endScreen{
+
+    background:
+
+    linear-gradient(rgba(8,12,10,.78),
+    rgba(8,12,10,.92)),
+
+    radial-gradient(circle,#4d6b46,#18291d);
+
+}
+
+.menu{
+
+    width:620px;
+
+    padding:45px;
+
+    border-radius:24px;
+
+    background:var(--panel);
+
+    border:1px solid var(--panelBorder);
+
+    backdrop-filter:blur(18px);
+
+    text-align:center;
+
+}
+
+.menu h1{
+
+    font-size:42px;
+
+    color:var(--gold);
+
+    margin-bottom:15px;
+
+}
+
+.menu h2{
+
+    font-size:38px;
+
+    color:var(--gold);
+
+}
+
+.subtitle{
+
+    color:#d9d9d9;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================
+          ПРАВИЛА
+=========================== */
+
+.rules{
+
+    margin-bottom:30px;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:left;
+
+}
+
+.rules h3{
+
+    color:var(--gold);
+
+    margin-bottom:12px;
+
+}
+
+.rules li{
+
+    list-style:none;
+
+    padding:6px 0;
+
+}
+
+/* ===========================
+        INPUT
+=========================== */
+
+input{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    border:none;
+
+    outline:none;
+
+    font-size:18px;
+
+    background:#f4f4f4;
+
+    margin-bottom:20px;
+
+}
+
+input:focus{
+
+    box-shadow:0 0 0 3px var(--gold);
+
+}
+
+/* ===========================
+        КНОПКИ
+=========================== */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    background:linear-gradient(#ffd84f,#f3b933);
+
+    transition:.25s;
+
+}
+
+button:hover:not(:disabled){
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(255,215,0,.35);
+
+}
+
+button:disabled{
+
+    background:#777;
+
+    cursor:not-allowed;
+
+}
+
+/* ===========================
+        ИГРОВОЙ UI
+=========================== */
+
+#gameScreen{
+
+    flex-direction:column;
+
+    background:#111;
+
+}
+
+#gameUI{
+
+    width:100%;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 25px;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(10px);
+
+    z-index:50;
+
+}
+
+.panel{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.panel.center{
+
+    gap:30px;
+
+    font-size:20px;
+
+}
+
+/* ===========================
+          БАРЫ
+=========================== */
+
+.stat{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.bar{
+
+    width:180px;
+
+    height:16px;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#555;
+
+}
+
+.bar div{
+
+    width:100%;
+
+    height:100%;
+
+    transition:.3s;
+
+}
+
+#hpBar{
+
+    background:linear-gradient(90deg,#ff5252,#ff2b2b);
+
+}
+
+#mpBar{
+
+    background:linear-gradient(90deg,#53b8ff,#2b7fff);
+
+}
+
+/* ===========================
+         СПОСОБНОСТИ
+=========================== */
+
+#skillsPanel{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.skill{
+
+    width:78px;
+
+    height:72px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.25s;
+
+}
+
+.skill:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--gold);
+
+}
+
+.skill span{
+
+    font-size:24px;
+
+    color:var(--gold);
+
+}
+
+.skill small{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+}
+
+/* ===========================
+          CANVAS
+=========================== */
+
+#gameWorld{
+
+    flex:1;
+
+    width:100%;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+canvas{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    background:#7fb5ff;
+
+}
+
+/* ===========================
+            ПАУЗА
+=========================== */
+
+#pauseScreen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+}
+
+#pauseScreen.active{
+
+    display:flex;
+
+}
+
+#pauseScreen h2{
+
+    font-size:72px;
+
+    color:var(--gold);
+
+    margin-bottom:15px;
+
+}
+
+#pauseScreen p{
+
+    font-size:22px;
+
+}
+
+/* ===========================
+      РЕЗУЛЬТАТЫ
+=========================== */
+
+#resultsContainer{
+
+    margin:30px 0;
+
+    line-height:2;
+
+    font-size:20px;
+
+}
+
+#restartBtn{
+
+    width:280px;
+
+}
+
+/* ===========================
+      АНИМАЦИИ
+=========================== */
+
+@keyframes glow{
+
+    from{
+
+        text-shadow:0 0 8px gold;
+
+    }
+
+    to{
+
+        text-shadow:0 0 30px gold;
+
+    }
+
+}
+
+.menu h1{
+
+    animation:glow 2s infinite alternate;
+
+}
+
+#exitBtn{
+
+    width:260px;
+
+    margin-top:30px;
+
+    background:#d9534f;
+
+    color:white;
+
+}
+
+#exitBtn:hover{
+
+    background:#c9302c;
+
+}

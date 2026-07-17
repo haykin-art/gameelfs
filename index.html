@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Похождение лесного эльфа</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ================= СТАРТОВОЕ МЕНЮ ================= -->
+
+    <section id="startScreen" class="screen active">
+
+        <div class="menu">
+
+            <h1>🌲 Приключения лесного эльфа 🌲</h1>
+
+            <p class="subtitle">
+                Освободи древний лес от орков, гоблинов и троллей.
+            </p>
+
+            <div class="rules">
+
+                <h3>Управление</h3>
+
+                <ul>
+
+                    <li>⬅ ➡ — движение</li>
+
+                    <li>1 — Выстрел</li>
+
+                    <li>2 — Магический щит</li>
+
+                    <li>3 — Три стрелы</li>
+
+                    <li>4 — Град стрел</li>
+
+                    <li>ESC — Пауза</li>
+
+                </ul>
+
+            </div>
+
+            <input
+                    id="playerName"
+                    type="text"
+                    maxlength="20"
+                    placeholder="Введите имя героя">
+
+            <button id="startBtn" disabled>
+
+                Начать путешествие
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ИГРА ================= -->
+
+
+
+    <section id="gameScreen" class="screen">
+
+        <header id="gameUI">
+
+            <div class="panel">
+
+                <div class="stat">
+
+                    ❤️
+
+                    <div class="bar hp">
+
+                        <div id="hpBar"></div>
+
+                    </div>
+
+                    <span id="hpDisplay">100</span>
+
+                </div>
+
+                <div class="stat">
+
+                    💧
+
+                    <div class="bar mp">
+
+                        <div id="mpBar"></div>
+
+                    </div>
+
+                    <span id="mpDisplay">100</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="panel center">
+
+                <span>
+
+                    ⚔ Убийства:
+
+                    <b id="scoreDisplay">0</b>
+
+                </span>
+
+                <span>
+
+                    ⏱
+
+                    <b id="timerDisplay">00:00</b>
+
+                </span>
+
+            </div>
+
+
+
+            <div id="skillsPanel">
+
+                <div class="skill">
+
+                    <span>1</span>
+
+                    <small>Выстрел 5mp</small>
+
+                </div>
+
+                <div class="skill">
+
+                    <span>2</span>
+
+                    <small>Щит 20mp</small>
+
+                </div>
+
+                <div class="skill">
+
+                    <span>3</span>
+
+                    <small>Три стрелы 15mp</small>
+
+                </div>
+
+                <div class="skill">
+
+                    <span>4</span>
+
+                    <small>Град 40mp</small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <div id="gameWorld">
+
+            <canvas id="gameCanvas"></canvas>
+
+
+
+            <div id="pauseScreen">
+
+                <h2>ПАУЗА</h2>
+
+                <p>Нажмите ESC чтобы продолжить</p>
+
+                <button id="exitBtn">
+                    Выйти в главное меню
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ФИНИШ ================= -->
+
+
+
+    <section id="endScreen" class="screen">
+
+        <div class="menu">
+
+            <h2 id="gameResult">
+
+                Победа
+
+            </h2>
+
+
+
+            <div id="resultsContainer">
+
+            </div>
+
+
+
+            <button id="restartBtn">
+
+                Играть снова
+
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
